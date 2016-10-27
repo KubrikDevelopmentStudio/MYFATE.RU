@@ -63,7 +63,7 @@ width: 90%;
 
 .main-signin .main-signin__middle .middle__form input[type="text"], .main-signin .main-signin__middle .middle__form input[type="password"] { 
 padding:15px 20px; 
-width:81%; 
+width:90%; 
 } 
 
 .main-signin .main-signin__middle .middle__form input[type="password"] { 
@@ -114,12 +114,15 @@ width: 56%;
 } 
 .main-signin .main-signin__foot .foot p { 
 color: #586069; 
-margin: 5px -5px; 
-width: 207px; 
+margin: 5px -8px; 
+width: 240px; 
+font-family: sans-serif; 
+font-size: 14px; 
+font-weight: bold;
 } 
 .main-signin .main-signin__foot .foot{ 
 float: left; 
-width: 38%; 
+width: 70%; 
 } 
 .main-signin .main-signin__foot, 
 .main-signin .main-signin__foot { 
