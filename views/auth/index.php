@@ -27,4 +27,24 @@
             </div>
         </div>
     </div>
+    <div id="footerSlice">
+        <div class="other">
+            <div class="otherField"><p>Привет всем! Это пробный див. Рад всех видеть.Привет всем!</p></div>
+        </div>
+    </div>
 </body>
+<script>
+    $(document).ready(function(){
+        setInterval(function() {
+            $('.aMore').on('mouseover', function() {
+                $('.other').css({'display':'table'});
+                $('.other').animate({'margin-top':'-70px', 'opacity':'1'}, {queue:false, duration:500});
+            });
+        }, 500);
+        setInterval(function() {
+            $('.aMore').on('mouseout', function() {
+                $('.other').animate({'margin-top':'20px', 'opacity':'0'}, {queue:false, duration:500});
+            })
+        }, 500);
+    });
+</script>

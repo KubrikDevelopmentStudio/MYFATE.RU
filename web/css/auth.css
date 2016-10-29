@@ -155,3 +155,42 @@ label {
     text-decoration: none;
     color: wheat;
 }
+
+.other {
+    position: relative;
+    opacity: 0;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: -webkit-auto;
+    width: 455px;
+    color: wheat;
+    background: #1f1e23;
+    box-shadow: 0 0 35px 0px black;
+    border-radius: 10px;
+    font-family: -webkit-body;
+    height: 65px;
+    font-style: italic;
+}
+#footerSlice {
+    position: absolute;
+    width: 455px;
+    left: 50%;
+    margin-left: -237px;
+    margin-top: 70px;
+}
+.lbl1 {
+    width: 130px;
+}
+.lbl2 {
+    width: 248px;
+}
+.otherField {
+    width: 450px;
+    background: #242328;
+    padding: 1px;
+    text-align: center;
+    float: left;
+    margin: 3px 0 0 2px;
+    border-radius: 10px;
+    line-height: 1.5;
+}
