@@ -8,11 +8,16 @@
 
 namespace app\controllers;
 
+use app\models\Users;
 use yii\web\Controller;
 
 class AuthController extends Controller
 {
     public function actionIndex() {
+
+        $fields = Users::find()->all();
+        //debug($fields);
+
         return $this->render('index');
     }
 }
