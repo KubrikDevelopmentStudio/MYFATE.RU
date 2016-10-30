@@ -1,12 +1,15 @@
-body {
-  margin: 0;
-  padding: 0;
-
+html {
   background: url("/web/images/auth-bg.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+#bodyMainForm {
+  margin: 0;
+  padding: 0;
+  overflow-x:hidden;
+  overflow-y:hidden;
 }
 .main-signin {
   box-shadow: 0px 140px 140px white;
@@ -55,7 +58,7 @@ body {
 .main-signin .main-signin__middle .middle__form :-ms-input-placeholder {
   color: #25262a;
 }
-.main-signin .main-signin__middle .middle__form input[type="text"], .main-signin .main-signin__middle .middle__form input[type="password"], .main-signin .main-signin__middle .middle__form input[type="submit"] {
+.main-signin .main-signin__middle .middle__form .login-input-auth, .main-signin .main-signin__middle .middle__form .pass-input-auth, .main-signin .main-signin__middle .middle__form .submit-login-auth {
   background: #daf4fe;
   border-radius: 5px 5px 0 0;
   border: none;
@@ -67,13 +70,13 @@ body {
   width: 90%;
 }
 
-.main-signin .main-signin__middle .middle__form input[type="text"], .main-signin .main-signin__middle .middle__form input[type="password"] {
+.main-signin .main-signin__middle .middle__form .login-input-auth, .main-signin .main-signin__middle .middle__form .pass-input-auth {
   padding:15px 20px;
   width:81%;
   border-top: 1px solid #acabab;
 }
 
-.main-signin .main-signin__middle .middle__form input[type="password"] {
+.main-signin .main-signin__middle .middle__form .pass-input-auth {
   border-top: 1px solid #acabab;
   border-radius: 0 0 5px 5px;
 }
@@ -99,7 +102,7 @@ body {
 .reg:hover {
   background: #0088bb;
 }
-.main-signin .main-signin__middle .middle__form input[type="submit"] {
+.main-signin .main-signin__middle .middle__form .submit-login-auth {
   background: #00aeef;
   border-radius: 5px;
   border-bottom: 1px solid #000;
@@ -110,10 +113,10 @@ body {
   cursor:pointer;
   text-transform: uppercase;
 }
-.main-signin .main-signin__middle .middle__form input[type="submit"]:hover {
+.main-signin .main-signin__middle .middle__form .submit-login-auth:hover {
   background: #0088bb;
 }
-.middle__form input[type="submit"]:active {
+.middle__form .submit-login-auth:active {
   background: #80d6f7;
 }
 .main-signin .main-signin__foot {
@@ -172,7 +175,7 @@ label {
   position: relative;
   opacity: 0;
   padding: 10px;
-  margin: 0 auto;
+  margin: 150px auto;
   text-align: -webkit-auto;
   width: 455px;
   color: wheat;
@@ -182,6 +185,7 @@ label {
   font-family: -webkit-body;
   height: 65px;
   font-style: italic;
+  z-index: 9;
 }
 #footerSlice {
   position: absolute;
@@ -217,4 +221,56 @@ label {
   margin-top: 6px;
   position: absolute;
   margin-left: 20px;
+}
+.hr {
+  color: #555;
+  background-color: #ffc000;
+  border: 0px none;
+  height: 1px;
+  clear: both;
+  width: 350px;
+  margin-top: -2px;
+}
+.dataDay {
+  float: left;
+  margin-left: 32px;
+  margin-top: -12px;
+  text-align: center;
+  background: #daf4fe;
+  color: #25262a;
+  border-radius: 10px 0 10px;
+  border: 1px solid;
+  width: 60px;
+  font-size: 15px;
+  padding: 3px;
+
+}
+.dataYear {
+  margin-top: -12px;
+  float: left;
+  margin-left: 10px;
+  text-align: center;
+  background: #daf4fe;
+  color: #25262a;
+  border-radius: 10px 0 10px;
+  border: 1px solid;
+  width: 100px;
+  padding: 3px;
+  font-size: 15px;
+}
+.dataMonth {
+  margin-top: -12px;
+  float: left;
+  margin-left: 10px;
+  text-align: center;
+  background: #daf4fe;
+  color: #25262a;
+  border-radius: 10px 0 10px;
+  border: 1px solid;
+  font-size: 15px;
+  padding: 3px;
+
+}
+:focus{
+  outline: none;
 }

@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.main-signin1 {
+    box-shadow: 0px 140px 140px white;
+    width: 455px;
+    height: 310px;
+    position: absolute;
+    display: none;
+    margin: -501px 2000px;
+    /*margin: -501px auto;
+    left: 467px;*/
+}
+.main-signin1 .main-signin__head1 {
+    background: #242328;
+    border-bottom: 1px solid #2d2f32;
+    border-radius: 10px 10px 0 0;
+    box-shadow: -15px 15px 200px white;
+    padding: 10px 0;
+    width: 471px;
+    margin-left: -8px;
+}
+.main-signin1 .main-signin__head1 p {
+    color: #777b91;
+    text-align: center;
+    font-size: 22px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    line-height: 40px;
+}
+.main-signin1 .main-signin__middle1 {
+    background: #1f1e23;
+    border-bottom: 1px solid #2d2f32;
+    border-top: 1px solid #2d2f32;
+    box-shadow: 0px 110px 141px white;
+    width: 471px;
+    margin-left: -8px;
+}
+.main-signin1 .main-signin__middle1 .middle__form1 {
+    margin: 40px 0 20px 0;
+}
+.main-signin1 .main-signin__middle1 .middle__form1 ::-webkit-input-placeholder {
+    color: #25262a;
+}
+.main-signin1 .main-signin__middle1 .middle__form1 :-moz-placeholder {
+    color: #25262a;
+}
+.main-signin1 .main-signin__middle1 .middle__form1 ::-moz-placeholder {
+    color: #25262a;
+}
+.main-signin1 .main-signin__middle1 .middle__form1 :-ms-input-placeholder {
+    color: #25262a;
+}
+.main-signin1 .main-signin__middle1 .middle__form1 .loginForm1, .main-signin1 .main-signin__middle1 .middle__form1 .passForm1, .main-signin1 .main-signin__middle1 .middle__form1 .submitForm1 {
+    background: #daf4fe;
+    border-radius: 5px 5px 0 0;
+    border: none;
+    color: #25262a;
+    display: block;
+    margin: 2px 20px;
+    outline: none;
+    padding: 15px 0;
+    width: 90%;
+}
+
+.main-signin1 .main-signin__middle1 .middle__form1 .loginForm1, .main-signin1 .main-signin__middle1 .middle__form1 .passForm1 {
+    padding: 15px 20px;
+    width: 81%;
+    border-top: 1px solid #acabab;
+    margin-top: -9px;
+    border-radius: 6px;
+}
+
+.main-signin1 .main-signin__middle1 .middle__form1 .passForm1 {
+    border-top: 1px solid #acabab;
+    border-radius: 0 0 5px 5px;
+}
+.main-signin1 .main-signin__middle1 .middle__form1 .submitForm1 {
+    background: #00aeef;
+    border-radius: 5px;
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #80d6f7;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 15px;
+    cursor:pointer;
+    text-transform: uppercase;
+}
+.main-signin1 .main-signin__middle1 .middle__form1 .submitForm1:hover {
+    background: #0088bb;
+}
+.middle__form1 .submitForm1:active {
+    background: #80d6f7;
+}
+.main-signin1 .main-signin__foot1 {
+    background: #242328;
+    border-top: 1px solid #2d2f32;
+    border-radius: 0 0 10px 10px;
+    padding: 0px 0;
+    margin-left: -8px;
+    width: 471px;
+}
+.main-signin1 .main-signin__foot1 .foot {
+    float: left;
+    padding: 0 0 0 6%;
+    width: 56%;
+}
+.main-signin1 .main-signin__foot1 .foot p {
+    color: #586069;
+    margin: 5px -5px;
+    width: 207px;
+}
+.main-signin1 .main-signin__foot1 .foot{
+    float: left;
+    width: 38%;
+}
+.main-signin1 .main-signin__foot1,
+.main-signin1 .main-signin__foot1 {
+    float: left;
+}
+.main-signin1 .main-signin__foot1 a:not('.aMore'),
+.main-signin1 .main-signin__foot1 a:not('.aMore') {
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+    display: block;
+    margin: -12px 0;
+    text-indent: -999em;
+    width: 85px;
+    height: 77px;
+}
+label {
+    display: -webkit-box;
+    color: #566069;
+    margin-left: 14px;
+    padding: 5px 2px;
+    width: 183px;
+}
+.logo {
+    margin-top: 6px;
+    position: absolute;
+    margin-left: 20px;
+}
+.lbl2 {
+    width: 367px;
+}
+.aMore {
+    text-decoration: none;
+    color: wheat;
+}
+.revertToAut {
+    margin-left: 210px;
+    cursor: pointer;
+    width: 50px;
+}
