@@ -19,7 +19,6 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/auth.css',
     ];
     public $js = [
     ];
@@ -27,5 +26,4 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
-    public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
 }
