@@ -1,5 +1,8 @@
 ﻿<?php
 
+	use yii\helpers\Html;
+	use yii\widgets\ActiveForm;
+
 	use app\assets\AuthAsset;
 	AuthAsset::register($this);
 
@@ -15,10 +18,24 @@
 		</div>
 		<div class="main-signin__middle">
 			<div class="middle__form">
-				<input type="text" placeholder="Логин или E-mail">
+				<?php $form = ActiveForm::begin([
+					'id' => 'login-form',
+					'method' => 'post',
+					'action' => ['auth/login']
+				]); ?>
+				<?= Html::activeInput('text',         $model, 'userLogin',    ['placeHolder' => 'Логин или E-mail']) ?>
+				<?= Html::activeInput('password',     $model, 'password',     ['placeHolder' => 'Пароль'])           ?>
+				<?= Html::activeInput('submit',       $model, 'submitButton', ['value'       => 'ВОЙТИ'])            ?>
+				<br/>
+				<label class="lbl1">
+					<?= Html::activeInput('checkbox', $model, 'rememberMe',   ['class'       => 'checkReg'])         ?>
+					Запомнить меня!
+				</label>
+				<?php ActiveForm::end() ?>
+				<!--<input type="text" placeholder="Логин или E-mail">
 				<input type="password" placeholder="Пароль">
 				<input type="submit" value="Войти"><br/>
-        <label class="lbl1"><input type="checkbox" class="checkReg" />&nbspЗапомнить меня!</label>
+        <label class="lbl1"><input type="checkbox" class="checkReg" />&nbspЗапомнить меня!</label>-->
 			</div>
 		</div>
 		<div class="main-signin__foot">
