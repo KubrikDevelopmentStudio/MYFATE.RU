@@ -10,7 +10,7 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <body>
+	<body id="bodyMainForm">
 	<div class="main-signin">
 		<div class="main-signin__head">
 			<a href="#"><img src="/web/images/logo.png" class="logo"></a>
@@ -23,25 +23,21 @@
 					'method' => 'post',
 					'action' => ['auth/login']
 				]); ?>
-				<?= Html::activeInput('text',         $model, 'userLogin',    ['placeHolder' => 'Логин или E-mail']) ?>
-				<?= Html::activeInput('password',     $model, 'password',     ['placeHolder' => 'Пароль'])           ?>
-				<?= Html::activeInput('submit',       $model, 'submitButton', ['value'       => 'ВОЙТИ'])            ?>
+				<?= Html::activeInput('text',         $model, 'userLogin',    ['placeHolder' => 'Логин или E-mail', 'class' => 'login-input-auth']) ?>
+				<?= Html::activeInput('password',     $model, 'password',     ['placeHolder' => 'Пароль', 'class' => 'pass-input-auth'])           ?>
+				<?= Html::activeInput('submit',       $model, 'submitButton', ['value'       => 'ВОЙТИ', 'class' => 'submit-login-auth'])            ?>
 				<br/>
 				<label class="lbl1">
 					<?= Html::activeInput('checkbox', $model, 'rememberMe',   ['class'       => 'checkReg'])         ?>
 					Запомнить меня!
 				</label>
 				<?php ActiveForm::end() ?>
-				<!--<input type="text" placeholder="Логин или E-mail">
-				<input type="password" placeholder="Пароль">
-				<input type="submit" value="Войти"><br/>
-        <label class="lbl1"><input type="checkbox" class="checkReg" />&nbspЗапомнить меня!</label>-->
 			</div>
 		</div>
 		<div class="main-signin__foot">
 			<div class="foot">
-				<input class="reg aboutPassword" type="submit" value="Забыли пароль?" />
-				<input class="reg aboutReg" type="submit" value="Регистрация" />
+				<input class="reg aboutPassword submit-login-auth" type="submit" value="Забыли пароль?" />
+				<input class="reg aboutReg submit-login-auth" type="submit" value="Регистрация" />
         <!-- <label class="lbl2"><input type="checkbox" class="checkReg" />&nbspСоглашение о сайте (<span><a class="aMore" href="#">-- Подробнее --</a></span>)</label> -->
 			</div>
         </div>
@@ -52,20 +48,28 @@
               <div class="otherField"><p>Привет всем! Это пробный див. Рад всех видеть.Привет всем!</p></div>
             </div>
           </div>
-        </body>
-        <script type="text/javascript">
-           /*$(document).ready(function(){
-               setInterval(function() {
-                   $('.aMore').on('mouseover', function() {
-                     $('.other').css({'display':'table'});
-                     $('.other').animate({'margin-top':'-138px', 'opacity':'1'}, {queue:false, duration:500});
-                   });
-               }, 500);
-               setInterval(function() {
-                   $('.aMore').on('mouseout', function() {
-                     $('.other').animate({'margin-top':'20px', 'opacity':'0'}, {queue:false, duration:500});
-                   })
-               }, 500);
-           });*/
-    </script>
+
+	<!--ФОРМА РЕГИСТРАЦИИ-->
+	<div class="main-signin1 hiddenMainField">
+		<div class="main-signin__head1">
+			<a href="#"><img src="/web/images/logo.png" class="logo"></a>
+			<p>Регистрация<p>
+		</div>
+		<div class="main-signin__middle1">
+			<div class="middle__form1">
+				<input type="text" placeholder="Логин" class="loginForm1 loginForm1ForBorder"><br/><hr class="hr" /><br/>
+				<input type="text" class="emailOnSignin1 loginForm1" placeholder="E-mail">
+				<input type="password" placeholder="Пароль" class="passForm1">
+				<input type="password" placeholder="Подтвердите пароль" class="passForm1"><br/><hr class="hr" /><br/>
+				<input type="text" maxlength="2" class="dataDay" placeholder="ДД"><input type="text" maxlength="8" class="dataMonth" placeholder="МЕСЯЦ"><input type="text" maxlength="4" class="dataYear" placeholder="ГОД"><br/><br/>
+				<label><input type="checkbox">&nbspПринять правила сайта</label>
+				<label class="lbl2"><input type="checkbox" class="checkReg" />&nbspОтправлять оповещение на почту (<span><a class="aMore" href="#">подробнее</a></span>)</label>
+				<input type="submit" value="Зарегистрироваться" class="submitForm1">
+			</div>
+		</div>
+		<div class="main-signin__foot1">
+			<img src="/web/images/arrow.png" class="revertToAut">
+		</div>
+	</div>
+	</body>
 </html>
