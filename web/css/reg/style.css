@@ -163,3 +163,7 @@ label {
     -webkit-filter: saturate(200%);
     filter: saturate(200%);
 }
+
+#dD, #dM, #dY {
+    border: 1px solid #ffc000;
+}
