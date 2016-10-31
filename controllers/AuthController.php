@@ -8,7 +8,6 @@
 
 namespace app\controllers;
 
-use app\models\User;
 use Yii;
 use yii\web\Controller;
 
@@ -49,9 +48,7 @@ class AuthController extends Controller
             print_r($user);
 
         } else {
-            $err = $model->errors;
-            echo "Ошибка!: ";
-            print_r($err);
+            return $this->render('index', compact($model, $model->errors));
         }
 
     }

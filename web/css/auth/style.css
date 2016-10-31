@@ -274,3 +274,13 @@ label {
 :focus{
   outline: none;
 }
+
+/*
+#authform-userlogin {
+  border: 1px solid #ffc000;
+}
+
+#authform-password {
+  border: 1px solid #ffc000;
+  border-top: none;
+}*/
