@@ -65,10 +65,11 @@
 				<label><input type="checkbox">&nbspПринять правила сайта</label>
 				<label class="lbl2"><input type="checkbox" class="checkReg" />&nbspОтправлять оповещение на почту (<span><a class="aMore" href="#">подробнее</a></span>)</label>
 				<input type="submit" value="Зарегистрироваться" class="submitForm1">
+				<img src="/web/images/arrow.png" class="revertToAut">
 			</div>
 		</div>
 		<div class="main-signin__foot1">
-			<img src="/web/images/arrow.png" class="revertToAut">
+			<!--<img src="/web/images/arrow.png" class="revertToAut">-->
 		</div>
 	</div>
 	</body>
