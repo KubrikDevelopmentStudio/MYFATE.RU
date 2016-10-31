@@ -8,7 +8,7 @@ body {
     height: 310px;
     position: absolute;
     display: none;
-    margin: -501px 2000px;
+    margin: -610px 2000px;
     /*margin: -501px auto;
     left: 467px;*/
 }
@@ -84,7 +84,7 @@ body {
     color: #fff;
     font-size: 18px;
     margin-top: 15px;
-    cursor:pointer;
+    cursor: pointer;
     text-transform: uppercase;
 }
 .main-signin1 .main-signin__middle1 .middle__form1 .submitForm1:hover {
@@ -94,10 +94,12 @@ body {
     background: #80d6f7;
 }
 .main-signin1 .main-signin__foot1 {
+    height: 55px;
     background: #242328;
     border-top: 1px solid #2d2f32;
     border-radius: 0 0 10px 10px;
-    padding: 0px 0;
+    padding: 10px 0;
+    margin-top: 0px;
     margin-left: -8px;
     width: 471px;
 }
@@ -151,7 +153,13 @@ label {
     color: wheat;
 }
 .revertToAut {
-    margin-left: 210px;
+    margin-left: 190px;
     cursor: pointer;
-    width: 50px;
+    width: 71px;
+    margin-top: 20px;
+    position: absolute;
+}
+.revertToAut:hover {
+    -webkit-filter: saturate(200%);
+    filter: saturate(200%);
 }
