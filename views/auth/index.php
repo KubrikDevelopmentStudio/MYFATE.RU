@@ -72,7 +72,7 @@
                 <br/><hr class="hr" /><br/>
                 <!--Блок Даты рождения-->
                 <?= Html::activeInput('text',   $model, 'dateDay',    ['placeHolder' => 'ДД', 'maxlength' => '2', 'id' => 'dD', 'class' => 'dataDay']) ?>
-                <?= Html::activeInput('text',   $model, 'dateDay',    ['placeHolder' => 'МЕСЯЦ', 'id' => 'dM','class' => 'dataMonth']) ?>
+                <?= Html::activeInput('text',   $model, 'dateMonth',    ['placeHolder' => 'МЕСЯЦ', 'id' => 'dM','class' => 'dataMonth']) ?>
                 <?= Html::activeInput('text',   $model, 'dateYear',    ['placeHolder' => 'ГОД', 'maxlength' => '4', 'id' => 'dY','class' => 'dataYear']) ?>
                 <br/><br/>
                 <label>

@@ -13,11 +13,19 @@ use yii\web\Controller;
 
 use app\models\AuthForm;
 use app\models\Users;
+use yii\web\NotFoundHttpException;
 
 
 class AuthController extends Controller
 {
     public function actionIndex() {
+
+        if(Yii::$app->session->isActive && Yii::$app->session->has('password')) {
+            /*Дейстия по авторизации пользователя,
+            повторная авторизация аяксом к серверу тут*/
+        } else {
+
+        }
 
         $model = new AuthForm();
 
@@ -25,40 +33,36 @@ class AuthController extends Controller
     }
 
     public function actionLogin() {
-        $request = Yii::$app->request;
 
-        $model = new AuthForm();
+        $model  = new AuthForm(['scenario' => 'login']);
 
-        $model->load($request->post());
+        if($model->load(Yii::$app->request->post()) && $model->validate()) {
 
-        if($model->validate()) {
+            $data = Yii::$app->request->getBodyParam('AuthForm');
 
-            $data = $request->getBodyParam('AuthForm');
+            if(Users::getAuth($data['userLogin'], $data['password'])) {
+                throw new NotFoundHttpException('Успешная авторизация!');
+            } else {
+                throw new NotFoundHttpException('Пользователь не найден!');
+            }
+        } else {
+            return $this->render('index', compact('model', $model));
+        }
+    }
 
-            $name       = $data['userLogin'];
-            $password   = $data['password'];
-            /*$rememberMe = $data['rememberMe'];*/
+    public function actionRegister() {
 
-            $user = Users::find()
-                ->where(['LOGIN' => $name])
-                ->orWhere(['EMAIL' => $name])
-                ->andWhere(['PASSWORD' => md5($password)])
-                ->one();
+        $model = new AuthForm(['scenario' => 'register']);
 
-            print_r($user);
+        if($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $data = Yii::$app->request->getBodyParam('AuthForm');
+
+            Users::tryReg($data);
 
         } else {
-            return $this->render('index', compact($model, $model->errors));
+            echo "<code>" . __FILE__ . ": ";
+            print_r($model->errors);
+            echo "</code>";
         }
-
     }
 }
-
-/*$request = Yii::$app->request;
-if($request->isPost) {
-    $name =       $request->post('userLogin');
-    $password =   $request->post('password');
-    $rememberMe = $request->post('rememberMe');
-
-    debug($rememberMe);
-}*/
