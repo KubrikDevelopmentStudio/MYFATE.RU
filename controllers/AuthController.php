@@ -14,6 +14,8 @@ use yii\web\Controller;
 
 use app\models\AuthForm;
 use app\models\Users;
+use app\models\Passwords;
+
 use yii\web\Cookie;
 use yii\web\NotFoundHttpException;
 
@@ -22,11 +24,13 @@ class AuthController extends Controller
 {
     public function actionIndex() {
 
-        if(Yii::$app->session->isActive && Yii::$app->session->has('password')) {
-            /*Дейстия по авторизации пользователя,
-            повторная авторизация аяксом к серверу тут*/
-        } else {
-
+        $current_session = Yii::$app->session;
+        if($current_session->has('hash_password')) {
+            /*TODO !!!ВАЖНО!!!*/
+            /*Тут запрос к модели Users, где будет тащиться инфа из БД
+            по ХЕШУ пароля, который в сессии или куки. Если найдем, подтягиваем
+            остальную информацию по пользователю (проверить забанен он или нет и тп).
+            Потом в фоне записываем всю инфомрацию в куки и сессии*/
         }
 
         $model = new AuthForm();
@@ -52,7 +56,7 @@ class AuthController extends Controller
                 $session->open();
 
                 //Создаем хеш пароля пользователя.
-                $hash_password = Yii::$app->getSecurity()->generatePasswordHash($data['password']);
+                $hash_password = Passwords::generateHash($data['password']);
 
                 /*Установка хешей пароля для СЕССИИ и КУКИ*/
 
@@ -60,7 +64,7 @@ class AuthController extends Controller
                 if(!$session->get('hash_password')) {
                     $session->set('hash_password', $hash_password);
                 } else {
-                    if(!Yii::$app->getSecurity()->validatePassword($data['password'], $session->get('hash_password'))) {
+                    if(!Passwords::comparePassword($data['password'], $session->get('hash_password'))) {
                         throw new NotFoundHttpException("В сессия был обнаружен пароль, но он не совпал! Ошибка!");
                         die();
                     }
