@@ -8,11 +8,13 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use yii\web\Controller;
 
 use app\models\AuthForm;
 use app\models\Users;
+use yii\web\Cookie;
 use yii\web\NotFoundHttpException;
 
 
@@ -40,8 +42,44 @@ class AuthController extends Controller
 
             $data = Yii::$app->request->getBodyParam('AuthForm');
 
-            if(Users::getAuth($data['userLogin'], $data['password'])) {
-                throw new NotFoundHttpException('Успешная авторизация!');
+            if($userInfo = Users::getAuth($data['userLogin'], $data['password'])) {
+                /*Успешная авторизация, кладем в сессии
+                информацию о пользователе в сессии и куки*/
+                $session = Yii::$app->session;
+                $cookie  = Yii::$app->response->cookies;
+
+                //Открываем сессию
+                $session->open();
+
+                //Создаем хеш пароля пользователя.
+                $hash_password = Yii::$app->getSecurity()->generatePasswordHash($data['password']);
+
+                /*Установка хешей пароля для СЕССИИ и КУКИ*/
+
+                /*Сессия*/
+                if(!$session->get('hash_password')) {
+                    $session->set('hash_password', $hash_password);
+                } else {
+                    if(!Yii::$app->getSecurity()->validatePassword($data['password'], $session->get('hash_password'))) {
+                        throw new NotFoundHttpException("В сессия был обнаружен пароль, но он не совпал! Ошибка!");
+                        die();
+                    }
+                }
+
+                /*Куки*/
+                if(!isset(Yii::$app->request->cookies['hash_password'])) {
+                    $cookie->add(new Cookie([
+                        'name' => 'hash_password',
+                        'value' => $hash_password,
+                    ]));
+                }
+
+                return $this->render('index', compact('model', $model));
+                /*Установка полученных данных о пользователе
+                из БД в сессию для удобного доступа. (см. таблица: USERS)*/
+                $session->set('user_info', $userInfo);
+
+
             } else {
                 throw new NotFoundHttpException('Пользователь не найден!');
             }
