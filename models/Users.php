@@ -79,10 +79,10 @@ class Users extends ActiveRecord
             ':login' => $email,
             ':email' => $email,
             'password' => $password
-        ])->one();
+        ])->one()->toArray();
 
         if($result)
-            return true;
+            return $result;
         else
             return false;
     }
