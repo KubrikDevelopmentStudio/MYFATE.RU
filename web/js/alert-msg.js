@@ -7,7 +7,9 @@ $(document).ready(function () {
        $(this).fadeOut(1000);
    })
 
-    setInterval(function () {
+    $('.success').fadeIn(1000);
+
+   /* setInterval(function () {
         $('.error').fadeOut(1000);
-    }, 5000);
+    }, 5000);*/
 });

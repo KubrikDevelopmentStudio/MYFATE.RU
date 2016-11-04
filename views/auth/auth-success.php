@@ -23,7 +23,7 @@
 					'method' => 'post',
 					'action' => ['auth/login']
 				]); ?>
-				<?= Html::activeInput('text',         $model, 'userLogin',    ['placeHolder' => 'Логин или E-mail', 'class' => "login-input-auth"]) ?>
+				<?= Html::activeInput('text',         $model, 'userLogin',    ['placeHolder' => 'Логин или E-mail', 'class' => 'login-input-auth']) ?>
 				<?= Html::activeInput('password',     $model, 'password',     ['placeHolder' => 'Пароль', 'class' => 'pass-input-auth'])            ?>
 				<?= Html::activeInput('submit',       $model, 'submitButton', ['value'       => 'ВОЙТИ', 'class' => 'submit-login-auth'])           ?>
 				<br/>
@@ -42,14 +42,7 @@
 			</div>
         </div>
         </div>
-		<!--БЛОК ДЛЯ ВЫВОДА ОШИБОК!-->
-	    <?php if($model->hasErrors()) {
-	    	foreach ($model->errors as $errorInfo) {
-	    		for ($i=0; $i < count($errorInfo); $i++) {
-					echo "<div class='error'>Ошибка: $errorInfo[$i]</div>";
-				}
-			}
-		} ?>
+		<div class='success'>Вы успешно авторизировались!</div>
           <div id="footerSlice">
             <div class="other">
               <div class="otherField"><p>Привет всем! Это пробный див. Рад всех видеть.Привет всем!</p></div>
