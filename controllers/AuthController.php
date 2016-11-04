@@ -85,10 +85,11 @@ class AuthController extends Controller
 
 
             } else {
-                throw new NotFoundHttpException('Пользователь не найден!');
+                $model->addError('userLogin', 'Пользователь не найден!');
+                return $this->render('auth-error', compact('model', $model));
             }
         } else {
-            return $this->render('index', compact('model', $model));
+            return $this->render('auth-error', compact('model', $model));
         }
     }
 

@@ -16,12 +16,14 @@ class AuthAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/auth/style.css',
-        'css/reg/style.css',
+        'css/auth/auth-style.css',
+        'css/reg/reg-style.css',
+        'css/messages/msg-style.css'
     ];
     public $js = [
         'js/jquery.js',
         'js/main.js',
+        'js/alert-msg.js'
     ];
     public $depends = [
         /*'yii\web\YiiAsset',
