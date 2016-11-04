@@ -47,6 +47,7 @@ class AuthController extends Controller
             $data = Yii::$app->request->getBodyParam('AuthForm');
 
             if($userInfo = Users::getAuth($data['userLogin'], $data['password'])) {
+
                 /*Успешная авторизация, кладем в сессии
                 информацию о пользователе в сессии и куки*/
                 $session = Yii::$app->session;
@@ -78,17 +79,19 @@ class AuthController extends Controller
                     ]));
                 }
 
-                return $this->render('index', compact('model', $model));
                 /*Установка полученных данных о пользователе
                 из БД в сессию для удобного доступа. (см. таблица: USERS)*/
                 $session->set('user_info', $userInfo);
 
-
+                return $this->render('auth-success', compact('model', $model));
             } else {
-                throw new NotFoundHttpException('Пользователь не найден!');
+                $model->addError('userLogin', 'Пользователь не найден!');
+                return $this->render('auth-error', compact('model', $model));
             }
         } else {
-            return $this->render('index', compact('model', $model));
+            return $this->render('auth-error', [
+                'model' => $model,
+            ]);
         }
     }
 

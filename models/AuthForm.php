@@ -47,8 +47,8 @@ class AuthForm extends Model
     public function rules() {
         return [
           /*Поля формы АВТОРИЗАЦИИ*/
-          ['userLogin',  'required', 'message'    => 'Введите Ваш логин или E-mail!'],
-          ['password',   'required', 'message'    => 'Введите Ваш пароль!'],
+          ['userLogin',  'required', 'message'    => 'Поле Email обязательно для заполнения!'],
+          ['password',   'required', 'message'    => 'Необходимо ввести пароль!!'],
 
           ['rememberMe', 'boolean',  'trueValue'  => true,
                                      'falseValue' => false,

@@ -79,7 +79,9 @@ class Users extends ActiveRecord
             ':login' => $email,
             ':email' => $email,
             'password' => $password
-        ])->one()->toArray();
+        ])->one();
+
+        if(isset($result)) $result = $result->toArray();
 
         if($result)
             return $result;
