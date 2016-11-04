@@ -77,6 +77,13 @@ class AuthForm extends Model
     }
 
 
+    public function register() {
+
+        $user = new User();
+        /*TODO Досмотреть видео дальше, разделить эти ебучие формы!
+        https://www.youtube.com/watch?v=pKq_iiAL_dA*/
+
+    }
 
     public function validPsw() {
         //@TODO Тут валидкашка на парольку.
