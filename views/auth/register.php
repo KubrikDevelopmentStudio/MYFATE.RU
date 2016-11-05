@@ -11,38 +11,11 @@
 <!DOCTYPE html>
 <html>
 	<body id="bodyMainForm">
-	<div class="main-signin">
-		<div class="main-signin__head">
-			<a href="#"><img src="/web/images/logo.png" class="logo"></a>
-			<p>Авторизация<p>
-		</div>
-		<div class="main-signin__middle">
-			<div class="middle__form">
-				<?php $form = ActiveForm::begin([
-					'id'     => 'login-form',
-					'method' => 'post',
-					'action' => ['auth/login']
-				]); ?>
-				<?= Html::activeInput('text',         $model, 'userLogin',    ['placeHolder' => 'Логин или E-mail', 'class' => 'login-input-auth']) ?>
-				<?= Html::activeInput('password',     $model, 'password',     ['placeHolder' => 'Пароль', 'class' => 'pass-input-auth'])            ?>
-				<?= Html::activeInput('submit',       $model, 'submitButton', ['value'       => 'ВОЙТИ', 'class' => 'submit-login-auth'])           ?>
-				<br/>
-				<label class="lbl1">
-					<?= Html::activeInput('checkbox', $model, 'rememberMe',   ['class'       => 'checkReg'])         ?>
-					Запомнить меня!
-				</label>
-				<?php ActiveForm::end() ?>
-			</div>
-		</div>
-		<div class="main-signin__foot">
-			<div class="foot">
-				<input class="reg aboutPassword submit-login-auth" type="submit" value="Забыли пароль?" />
-				<input class="reg aboutReg submit-login-auth" type="submit" value="Регистрация" />
-        <!-- <label class="lbl2"><input type="checkbox" class="checkReg" />&nbspСоглашение о сайте (<span><a class="aMore" href="#">-- Подробнее --</a></span>)</label> -->
-			</div>
-        </div>
-        </div>
-		<div class='success'>Вы успешно авторизировались!</div>
+          <div id="footerSlice">
+            <div class="other">
+              <div class="otherField"><p>Привет всем! Это пробный див. Рад всех видеть.Привет всем!</p></div>
+            </div>
+          </div>
 	<!--ФОРМА РЕГИСТРАЦИИ-->
 	<div class="main-signin1 hiddenMainField">
 		<div class="main-signin__head1">
@@ -62,8 +35,8 @@
                 <!--Email пользователя-->
                 <?= Html::activeInput('text',   $model, 'regUserEmail',    ['placeHolder' => 'Введите ваш Email', 'class' => 'loginForm1 emailOnSignin1']) ?>
                 <!--Блок ввода пароля и его повторения-->
-                <?= Html::activeInput('text',   $model, 'regUserPassFirst',    ['placeHolder' => 'Введите ваш пароль', 'class' => 'passForm1']) ?>
-                <?= Html::activeInput('text',   $model, 'regUserPassSecond',    ['placeHolder' => 'Введите ваш пароль ещё раз', 'class' => 'passForm1']) ?>
+                <?= Html::activeInput('password',   $model, 'regUserPassFirst',    ['placeHolder' => 'Введите ваш пароль', 'class' => 'passForm1']) ?>
+                <?= Html::activeInput('password',   $model, 'regUserPassSecond',    ['placeHolder' => 'Введите ваш пароль ещё раз', 'class' => 'passForm1']) ?>
                 <br/><hr class="hr" /><br/>
                 <!--Блок Даты рождения-->
                 <?= Html::activeInput('text',   $model, 'dateDay',    ['placeHolder' => 'ДД', 'maxlength' => '2', 'id' => 'dD', 'class' => 'dataDay']) ?>
@@ -85,6 +58,11 @@
 			</div>
 		</div>
 		<div class="main-signin__foot1">
+		</div>
+		<div id="footerSlice">
+			<div class="other">
+				<div class="otherField"><p>Привет всем! Это пробный див. Рад всех видеть.Привет всем!</p></div>
+			</div>
 		</div>
 	</div>
 	</body>

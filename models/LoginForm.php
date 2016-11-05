@@ -1,81 +1,56 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: root
+ * Date: 30.10.16
+ * Time: 21:24
+ */
 
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
 
-/**
- * LoginForm is the model behind the login form.
- *
- * @property User|null $user This property is read-only.
- *
- */
 class LoginForm extends Model
 {
-    public $username;
+    /*Элементы для формы авторизации*/
+    public $userLogin;
     public $password;
-    public $rememberMe = true;
+    public $rememberMe;
+    public $submitButton;
 
-    private $_user = false;
-
+    /*Сценарии модели*/
+    const SCENARIO_LOGIN    = 'login';
+    /*const SCENARIO_REGISTER = 'register';*/
 
     /**
-     * @return array the validation rules.
+     * @return array
      */
-    public function rules()
+    public function scenarios()
     {
         return [
-            // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
-            ['password', 'validatePassword'],
+            self::SCENARIO_LOGIN    => ['userLogin',     'password'],
+            /*self::SCENARIO_REGISTER => ['regUserLogin', 'regUserEmail', 'regUserPassFirst', 'regUserPassSecond', 'dateDay', 'dateMonth', 'dateYear', 'agreement'],*/
         ];
     }
 
-    /**
-     * Validates the password.
-     * This method serves as the inline validation for password.
-     *
-     * @param string $attribute the attribute currently being validated
-     * @param array $params the additional name-value pairs given in the rule
-     */
-    public function validatePassword($attribute, $params)
-    {
-        if (!$this->hasErrors()) {
-            $user = $this->getUser();
+    public function rules() {
+        return [
+          /*Поля формы АВТОРИЗАЦИИ*/
+          ['userLogin',  'required', 'message'    => 'Поле Email обязательно для заполнения!'],
+          ['password',   'required', 'message'    => 'Необходимо ввести пароль!!'],
 
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
-            }
-        }
+          ['rememberMe', 'boolean',  'trueValue'  => true,
+                                     'falseValue' => false,
+                                     'strict'     => false],
+
+          ['rememberMe', 'default',  'value'      => 'true'],
+
+          ['password',  'validPsw'],
+        ];
     }
 
-    /**
-     * Logs in a user using the provided username and password.
-     * @return bool whether the user is logged in successfully
-     */
-    public function login()
-    {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
-        }
+    public function validPsw() {
+        //@TODO Тут валидкашка на парольку.
         return false;
-    }
-
-    /**
-     * Finds user by [[username]]
-     *
-     * @return User|null
-     */
-    public function getUser()
-    {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
-        }
-
-        return $this->_user;
     }
 }
