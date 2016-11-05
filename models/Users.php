@@ -25,7 +25,7 @@ class Users extends ActiveRecord
                         'LOGIN'             =>  $data['regUserLogin'],
                         'PASSWORD'          =>  $data['regUserPassFirst'],
                         'EMAIL'             =>  $data['regUserPassFirst'],
-                        'USER_GROUP_ID'     =>  "001",                      /*001   - группа обычных пользователей*/
+                        'USER_GROUP_ID'     =>  "010",                      /*010   - группа обычных пользователей*/
                         'IS_ACTIVE'         =>  "true",                     /*true  - пользователь не отключен*/
                         'BAN_STATUS'        =>  "false",                    /*false - пользователь не забанен*/
                         'AGREEMENT_ACCEPT'  =>  $data['agreement'],
@@ -40,9 +40,7 @@ class Users extends ActiveRecord
      */
     public static function getAllUsers() {
 
-        $sql = "SELECT * FROM {{USERS}}";
-
-        $result = Users::findBySql($sql)->all();
+        $result = Users::find()->all();
 
         if(isset($result))
             return $result;

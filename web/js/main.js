@@ -2,7 +2,7 @@
  * Created by root on 30.10.16.
  */
 $(document).ready(function(){
-    setInterval(function() {
+   /* setInterval(function() {
         $('.aMore').on('mouseover', function() {
             $('.other').css({'display':'table'});
             $('.other').animate({'margin-top':'-40px', 'opacity':'1'}, {queue:false, duration:500});
@@ -35,7 +35,7 @@ $(document).ready(function(){
             $('.revertToAut').animate({'margin-left':'177px'}, 300);
             $('.revertToAut').animate({'margin-left':'+183px'}, 300);
         }
-    })
+    })*/
 });
 
 

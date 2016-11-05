@@ -8,11 +8,12 @@
 
 namespace app\controllers;
 
-use app\models\User;
+use app\models\LoginForm;
+
+use app\models\RegisterForm;
 use Yii;
 use yii\web\Controller;
 
-use app\models\AuthForm;
 use app\models\Users;
 use app\models\Passwords;
 
@@ -33,18 +34,18 @@ class AuthController extends Controller
             Потом в фоне записываем всю инфомрацию в куки и сессии*/
         }
 
-        $model = new AuthForm();
+        $model = new LoginForm();
 
-        return $this->render('index', compact('model', $model));
+        return $this->render('index', compact('model'));
     }
 
     public function actionLogin() {
 
-        $model  = new AuthForm(['scenario' => 'login']);
+        $model  = new LoginForm();
 
         if($model->load(Yii::$app->request->post()) && $model->validate()) {
 
-            $data = Yii::$app->request->getBodyParam('AuthForm');
+            $data = Yii::$app->request->getBodyParam('LoginForm');
 
             if($userInfo = Users::getAuth($data['userLogin'], $data['password'])) {
 
@@ -97,17 +98,11 @@ class AuthController extends Controller
 
     public function actionRegister() {
 
-        $model = new AuthForm(['scenario' => 'register']);
-
+        $model = new RegisterForm();
         if($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $data = Yii::$app->request->getBodyParam('AuthForm');
-
-            Users::tryReg($data);
 
         } else {
-            echo "<code>" . __FILE__ . ": ";
-            print_r($model->errors);
-            echo "</code>";
+            return $this->render('register', compact('model'));
         }
     }
 }
