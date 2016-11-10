@@ -48,6 +48,27 @@ class RegisterForm extends Model
     public function register() {
 
         $user = new User();
+        $user->userLogin = $this->regUserLogin;
+        $user->userEmail = $this->regUserEmail;
+
+        if($this->regUserPassFirst === $this->regUserPassSecond) {
+            $user->userPassword;
+        } else {
+            $this->addError('regUserPassFirst', "Ошибка! Пароли не совпадают!");
+        }
+
+        $user->dateDay = $this->dateDay;
+        $user->dateMonth = $this->dateMonth;
+        $user->dateYear = $this->dateYear;
+
+        if(!isset($this->agreement)) {
+            $this->addError('agreement', "Ошибка! Вы не прочли соглашение! Обязательно ознакомтесь с ним!");
+        }
+
+        $user->checkReg = $this->checkReg;
+
+        return $user->save() ? $user : null;
+
         /*TODO Досмотреть видео дальше, разделить эти ебучие формы!
         https://www.youtube.com/watch?v=pKq_iiAL_dA*/
 

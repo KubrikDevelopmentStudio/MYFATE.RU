@@ -18,21 +18,6 @@ class LoginForm extends Model
     public $rememberMe;
     public $submitButton;
 
-    /*Сценарии модели*/
-    const SCENARIO_LOGIN    = 'login';
-    /*const SCENARIO_REGISTER = 'register';*/
-
-    /**
-     * @return array
-     */
-    public function scenarios()
-    {
-        return [
-            self::SCENARIO_LOGIN    => ['userLogin',     'password'],
-            /*self::SCENARIO_REGISTER => ['regUserLogin', 'regUserEmail', 'regUserPassFirst', 'regUserPassSecond', 'dateDay', 'dateMonth', 'dateYear', 'agreement'],*/
-        ];
-    }
-
     public function rules() {
         return [
           /*Поля формы АВТОРИЗАЦИИ*/

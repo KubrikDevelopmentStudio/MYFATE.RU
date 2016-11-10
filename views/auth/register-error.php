@@ -1,11 +1,12 @@
 ﻿<?php
+
 	use yii\helpers\Html;
 	use yii\widgets\ActiveForm;
 
 	use app\assets\AuthAsset;
 	AuthAsset::register($this);
 
-    $this->title = "Авторизация";
+    $this->title = "Регистрация";
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,6 +52,14 @@
 				<img src="/web/images/arrow.png" class="revertToAut">
 			</div>
 		</div>
+		<!--БЛОК ДЛЯ ВЫВОДА ОШИБОК!-->
+		<?php if($model->hasErrors()) {
+			foreach ($model->errors as $errorInfo) {
+				for ($i=0; $i < count($errorInfo); $i++) {
+					echo "<div class='error'>Ошибка: $errorInfo[$i]</div>";
+				}
+			}
+		} ?>
 		<div class="main-signin__foot1">
 		</div>
 		<div id="footerSlice">

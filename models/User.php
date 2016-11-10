@@ -18,6 +18,18 @@ class User extends ActiveRecord implements IdentityInterface
     public $auth_key;
     public $password_hash;
 
+    public $userLogin;
+    public $userEmail;
+
+    public $userPassword;
+
+    public $dateDay;
+    public $dateMonth;
+    public $dateYear;
+
+    public $agreement;
+    public $checkReg;
+
     /*Группы пользователей*/
     const GROUP_ADMIN = '100';
     const GROUP_MODERATOR = '90';

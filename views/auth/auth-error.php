@@ -36,11 +36,23 @@
 		</div>
 		<div class="main-signin__foot">
 			<div class="foot">
-				<input class="reg aboutPassword submit-login-auth" type="submit" value="Забыли пароль?" />
-				<input class="reg aboutReg submit-login-auth" type="submit" value="Регистрация" />
-        <!-- <label class="lbl2"><input type="checkbox" class="checkReg" />&nbspСоглашение о сайте (<span><a class="aMore" href="#">-- Подробнее --</a></span>)</label> -->
+				<!--ЗАБЫЛИ ПАРОЛЬ-->
+				<?php $form = ActiveForm::begin([
+					'method' => 'post',
+					'action' => ['auth/forgot']
+				]); ?>
+				<?= Html::activeInput('submit', $model, 'forgotButton', ['value' => 'Забыли пароль?', 'class' => 'reg aboutPassword submit-login-auth']) ?>
+				<?php ActiveForm::end() ?>
+				<!--РЕГИСТРАЦИЯ-->
+				<?php $form = ActiveForm::begin([
+					'method' => 'post',
+					'action' => ['auth/register']
+				]); ?>
+				<?= Html::activeInput('submit', $model, 'registerButton', ['value' => 'Регистрация', 'class' => 'reg aboutReg submit-login-auth']) ?>
+				<?php ActiveForm::end() ?>
+
 			</div>
-        </div>
+		</div>
         </div>
 		<!--БЛОК ДЛЯ ВЫВОДА ОШИБОК!-->
 	    <?php if($model->hasErrors()) {

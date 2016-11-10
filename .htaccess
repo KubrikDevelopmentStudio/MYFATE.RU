@@ -1,2 +1,2 @@
 RewriteEngine on
-REwriteRule ^(.+)?$ /web/$1
+RewriteRule ^(.+)?$ /web/$1

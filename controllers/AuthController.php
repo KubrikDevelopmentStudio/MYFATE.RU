@@ -20,19 +20,34 @@ use app\models\Passwords;
 use yii\web\Cookie;
 use yii\web\NotFoundHttpException;
 
+use yii\filters\AccessControl;
+
 
 class AuthController extends Controller
 {
+
+    /*public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                 'only' => ['login', 'register'],
+                 'rules' => [
+                     'allow' => true,
+                     'actions' => ['login', 'register'],
+                     'roles' => ['?'],
+                 ],
+                [
+                    'allow' => true,
+                    'actions' => ['login', 'register'],
+                    'roles' => ['@'],
+                ],
+            ]
+        ];
+    }*/
+
     public function actionIndex() {
 
-        $current_session = Yii::$app->session;
-        if($current_session->has('hash_password')) {
-            /*TODO !!!ВАЖНО!!!*/
-            /*Тут запрос к модели Users, где будет тащиться инфа из БД
-            по ХЕШУ пароля, который в сессии или куки. Если найдем, подтягиваем
-            остальную информацию по пользователю (проверить забанен он или нет и тп).
-            Потом в фоне записываем всю инфомрацию в куки и сессии*/
-        }
 
         $model = new LoginForm();
 
@@ -84,10 +99,10 @@ class AuthController extends Controller
                 из БД в сессию для удобного доступа. (см. таблица: USERS)*/
                 $session->set('user_info', $userInfo);
 
-                return $this->render('auth-success', compact('model', $model));
+                return $this->render('auth-success', compact('model'));
             } else {
                 $model->addError('userLogin', 'Пользователь не найден!');
-                return $this->render('auth-error', compact('model', $model));
+                return $this->render('auth-error', compact('model'));
             }
         } else {
             return $this->render('auth-error', [
@@ -99,10 +114,15 @@ class AuthController extends Controller
     public function actionRegister() {
 
         $model = new RegisterForm();
-        if($model->load(Yii::$app->request->post()) && $model->validate()) {
 
-        } else {
-            return $this->render('register', compact('model'));
-        }
+        if($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if($user = $model->register()) {
+                if(Yii::$app->getUser()->login($user))
+                    return $this->goHome();
+            } else
+                return $this->render('register-error', compact('model'));
+        } else
+            return $this->render('register', compact('model', $model));
+
     }
 }
